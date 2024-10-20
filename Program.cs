@@ -1,84 +1,65 @@
-﻿//  exercise session 4 
-
-using System.ComponentModel;
-
-class program
+﻿string firstname = null;
+string lastname = null;
+int nationalcode = 0;
+long phone_num = 0;
+int age = 0;
+string str1 = "";
+string mm = firstname + lastname;
+bool age_flag = true;
+bool phon_num_flag = true;
+Console.WriteLine("Please ente your first name:");
+firstname = Console.ReadLine();
+Console.WriteLine("Please ente your last name:");
+lastname = Console.ReadLine();
+while (age_flag)
 {
-    public static void Main()
+    Console.WriteLine("Please ente your age:");
+    try
     {
-        // sum two number
-        Console.WriteLine("please enter first number: ");
-        int  num1= Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine("please enter second number");
-        int num2= Convert.ToInt32(Console.ReadLine());
-        int result=add (num1, num2);
-        Console.WriteLine(" the sum of two numbers is " + result);
-        // is divisible 
-        bool divisible =IsDivisible(num1, num2);
-        if (divisible)
+        age = int.Parse(Console.ReadLine());
+        age_flag = false;
+        if (age < 15 || age > 130)
         {
-            Console.WriteLine($"{num1} is divisible by {num2}");
+            phon_num_flag = false;
+            Console.WriteLine("your age is out of range.");
+            Console.ReadKey();
         }
-        else
-        {
-            Console.WriteLine($"{num1} is not divisible by {num2}");
-        }
-        // number is odd or even
-        Console.WriteLine("please enter a number: ");
-        int number  =Convert.ToInt32(Console.ReadLine());
-        bool isEven=IsEven(number);
-        if (isEven)
-        {
-            Console.WriteLine($"{number} is an even number");
-        }
-        else
-        {
-            Console.WriteLine($"{number} is an oddd number");
-        }
-        //  find smallest number
-        Console.WriteLine("How many numbers do you want to enter?");
-        int n=Convert.ToInt32(Console.ReadLine());
-        int[] numbers=new int[n];
-        for (int i = 0; i < n; i++)
-        {
-            Console.WriteLine($"please enter number {i + 1}: ");
-            numbers[i] = Convert.ToInt32(Console.ReadLine());
-        }
-        int smallestNumber = FindSmallest(numbers);
-        Console.WriteLine($"the smallest number is :{smallestNumber}");              
-
-
     }
-
-    static int add (int num1, int num2)
-    { 
-        return num1 + num2;
-    }
-    
-    static bool IsDivisible (int num1, int num2)
+    catch
     {
-        return num1 % num2==0;
+        Console.WriteLine("invalid age number");
+        age_flag = true;
     }
-    static bool IsEven(int num1)
-    {
-        return num1 % 2 == 0;
-    }
-
-    static int FindSmallest(int[] nums)
-    {
-        // supose first number is smallest
-        int smallest = nums[0];
-        for(int i=1;i<nums.Length; i++)
-        {
-            if (nums[i] < smallest)
-            {
-                smallest = nums[i];
-            }
-        }            
-        return smallest;
-    }
-
-
-
 }
 
+while (phon_num_flag)
+{
+    Console.WriteLine("Please ente your phone number:");
+    str1 = Console.ReadLine();
+    try
+    {
+        if ((str1.Length == 11 && str1.StartsWith('0')) || (str1.Length == 10 && !str1.StartsWith('0')))
+        {
+            phone_num = long.Parse(str1);
+            phon_num_flag = false;
+        }
+        else if (str1.Length == 13 && str1.StartsWith("+98"))
+        {
+            str1 = str1.Remove(0, 3);
+            phone_num = long.Parse(str1);
+            phon_num_flag = false;
+        }
+        else
+        {
+            Console.WriteLine("Invalid phone number.");
+            phon_num_flag = true;
+        }
+    }
+    catch
+    {
+        Console.WriteLine("Invalid phone number.");
+        phon_num_flag = true;
+    }
+}
+str1 = '0' + phone_num.ToString();
+Console.WriteLine($"user information:\nName: {firstname} {lastname}\nPhone number: {str1}\nAge:{age} ");
