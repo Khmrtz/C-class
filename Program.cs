@@ -1,65 +1,56 @@
-﻿string firstname = null;
-string lastname = null;
-int nationalcode = 0;
-long phone_num = 0;
-int age = 0;
-string str1 = "";
-string mm = firstname + lastname;
-bool age_flag = true;
-bool phon_num_flag = true;
-Console.WriteLine("Please ente your first name:");
-firstname = Console.ReadLine();
-Console.WriteLine("Please ente your last name:");
-lastname = Console.ReadLine();
-while (age_flag)
-{
-    Console.WriteLine("Please ente your age:");
-    try
-    {
-        age = int.Parse(Console.ReadLine());
-        age_flag = false;
-        if (age < 15 || age > 130)
-        {
-            phon_num_flag = false;
-            Console.WriteLine("your age is out of range.");
-            Console.ReadKey();
-        }
-    }
-    catch
-    {
-        Console.WriteLine("invalid age number");
-        age_flag = true;
-    }
-}
+﻿// fundamental class
 
-while (phon_num_flag)
+
+using System.ComponentModel.Design;
+
+Console.WriteLine("please enter your first name");
+string? FirstName = Console.ReadLine();
+Console.WriteLine("please enter your last name");
+string LastName = Console.ReadLine() ?? "";
+
+do
 {
+    Console.ForegroundColor =ConsoleColor.White;
+    Console.WriteLine("Please enter your age");
+    int age = int.Parse(Console.ReadLine() ?? "");
+    if (age < 18 || age>120)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("You are not valid to register");
+    }
+    else
+    {
+        Console.WriteLine("You can register");
+        break;
+    }
+} while (true);
+
+
+do 
+{
+    Console.ForegroundColor = ConsoleColor.White;
     Console.WriteLine("Please ente your phone number:");
-    str1 = Console.ReadLine();
-    try
-    {
-        if ((str1.Length == 11 && str1.StartsWith('0')) || (str1.Length == 10 && !str1.StartsWith('0')))
+    string phoneNumber = Console.ReadLine() ?? string.Empty;
+    if ((phoneNumber.Length == 11 && phoneNumber.StartsWith("0")) || (phoneNumber.Length == 10 && !phoneNumber.StartsWith("0")))
         {
-            phone_num = long.Parse(str1);
-            phon_num_flag = false;
-        }
-        else if (str1.Length == 13 && str1.StartsWith("+98"))
-        {
-            str1 = str1.Remove(0, 3);
-            phone_num = long.Parse(str1);
-            phon_num_flag = false;
-        }
-        else
-        {
+            try
+            {
+            long phone = long.Parse(phoneNumber);
+            Console.WriteLine("correct phone number.");
+            break;
+            }
+            catch
+            {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Invalid phone number.");
-            phon_num_flag = true;
+            }
         }
-    }
-    catch
-    {
+    else
+        {
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("Invalid phone number.");
-        phon_num_flag = true;
-    }
-}
-str1 = '0' + phone_num.ToString();
-Console.WriteLine($"user information:\nName: {firstname} {lastname}\nPhone number: {str1}\nAge:{age} ");
+        }
+} while(true);
+
+
+
