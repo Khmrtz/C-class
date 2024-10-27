@@ -3,12 +3,21 @@
 
 using System.ComponentModel.Design;
 
+namespace ConsoleApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            student student = new();
+            student.firstNmae = "khm";
+            student.lastNmae = "MRTZ";
+            student.age = 30;
+            student.phoneNumber = 09122117955;
+        }
+    }
+}
 
-student student = new();
-student.firstNmae = "khm";
-student.lastNmae = "MRTZ";
-student.age = 30;
-student.phoneNumber = 09122117955;
 
 
 
