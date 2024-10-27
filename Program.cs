@@ -3,19 +3,29 @@
 
 using System.ComponentModel.Design;
 
-namespace ConsoleApp
+class program
 {
-    class Program
+    static void Main()
     {
-        static void Main(string[] args)
+        int[,] matrix = new int[2, 2];
         {
-            student student = new();
-            student.firstNmae = "khm";
-            student.lastNmae = "MRTZ";
-            student.age = 30;
-            student.phoneNumber = 09122117955;
+            matrix[0,0] = 1;
+            matrix[0,1] = 2;
+            matrix[1,0] = 3;
+            matrix[1,1] = 4;
+        };
+        Console.WriteLine(matrix);
+        for (int i = 0; i < 2; i++)
+        {
+            for (int j = 0; j < 2; j++)
+            {
+                Console.WriteLine(matrix[i, j]+"");
+            }
+            Console.WriteLine();
         }
     }
+    
+    
 }
 
 
@@ -23,18 +33,35 @@ namespace ConsoleApp
 
 
 
+//namespace ConsoleApp
+//{
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            StudentClass student = new StudentClass();
+//            student.FirstName = "Test";
+//            student.LastNmae = "";
+//            student.Age= 30;
+//            student.PhoneNumber = 09122117958;
+//        }
+//    }
+//}
+
 
 //Console.WriteLine("please enter your first name");
-//string? FirstName = Console.ReadLine();
+//StudentClass student = new StudentClass();
+//Console.WriteLine("please enter first name");
+//student.FirstName = Console.ReadLine()??"";
 //Console.WriteLine("please enter your last name");
-//string LastName = Console.ReadLine() ?? "";
+//student.LastNmae = Console.ReadLine() ?? "";
 
 //do
 //{
-//    Console.ForegroundColor =ConsoleColor.White;
+//    Console.ForegroundColor = ConsoleColor.White;
 //    Console.WriteLine("Please enter your age");
-//    int age = int.Parse(Console.ReadLine() ?? "");
-//    if (age < 18 || age>120)
+//    student.Age = int.Parse(Console.ReadLine() ?? "");
+//    if (student.Age < 18 || student.Age > 120)
 //    {
 //        Console.ForegroundColor = ConsoleColor.Red;
 //        Console.WriteLine("You are not valid to register");
@@ -47,31 +74,33 @@ namespace ConsoleApp
 //} while (true);
 
 
-//do 
+//do
 //{
 //    Console.ForegroundColor = ConsoleColor.White;
 //    Console.WriteLine("Please ente your phone number:");
-//    string phoneNumber = Console.ReadLine() ?? string.Empty;
+
+//    student.PhoneNumber = int.Parce( Console.ReadLine());
+
 //    if ((phoneNumber.Length == 11 && phoneNumber.StartsWith("0")) || (phoneNumber.Length == 10 && !phoneNumber.StartsWith("0")))
+//    {
+//        try
 //        {
-//            try
-//            {
 //            long phone = long.Parse(phoneNumber);
 //            Console.WriteLine("correct phone number.");
 //            break;
-//            }
-//            catch
-//            {
+//        }
+//        catch
+//        {
 //            Console.ForegroundColor = ConsoleColor.Red;
 //            Console.WriteLine("Invalid phone number.");
-//            }
 //        }
+//    }
 //    else
-//        {
+//    {
 //        Console.ForegroundColor = ConsoleColor.Red;
 //        Console.WriteLine("Invalid phone number.");
-//        }
-//} while(true);
+//    }
+//} while (true);
 
 
 
