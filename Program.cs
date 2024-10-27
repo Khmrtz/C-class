@@ -1,65 +1,64 @@
-﻿string firstname = null;
-string lastname = null;
-int nationalcode = 0;
-long phone_num = 0;
-int age = 0;
-string str1 = "";
-string mm = firstname + lastname;
-bool age_flag = true;
-bool phon_num_flag = true;
-Console.WriteLine("Please ente your first name:");
-firstname = Console.ReadLine();
-Console.WriteLine("Please ente your last name:");
-lastname = Console.ReadLine();
-while (age_flag)
+﻿// fundamental class
+
+
+//Console.WriteLine("please enter your first name");
+//string? FirstName=Console.ReadLine();
+//Console.WriteLine("please enter your last name"); 
+//string LastName=Console.ReadLine() ??"";
+//Console.WriteLine("Please enter your age");
+//int age=int.Parse(Console.ReadLine()?? "" );
+//if (age<18)
+//{
+//    Console.WriteLine("You are not valid to register");
+//    return;
+//}
+Console.WriteLine("please enter your brithday month");
+string BirthMonth = Console.ReadLine() ?? "";
+BirthMonth = BirthMonth.Trim().ToLower();
+//BirthMonth=BirthMonth.Trim();
+//BirthMonth = BirthMonth.ToLower();
+
+
+
+
+
+Console.WriteLine("please enter your mobile number");
+string PhoneNumber = Console.ReadLine() ?? "";
+
+//if (PhoneNumber==null || PhoneNumber=="")
+//{
+//    Console.WriteLine("Please enter valid mobile number (null or '')");
+//}
+
+if (string.IsNullOrEmpty(PhoneNumber))
 {
-    Console.WriteLine("Please ente your age:");
-    try
-    {
-        age = int.Parse(Console.ReadLine());
-        age_flag = false;
-        if (age < 15 || age > 130)
-        {
-            phon_num_flag = false;
-            Console.WriteLine("your age is out of range.");
-            Console.ReadKey();
-        }
-    }
-    catch
-    {
-        Console.WriteLine("invalid age number");
-        age_flag = true;
-    }
+    Console.WriteLine("Please enter valid mobile number (string.isnullorempty)");
 }
 
-while (phon_num_flag)
+PhoneNumber = PhoneNumber.Trim().Replace("+98", "0");
+
+//PhoneNumber = PhoneNumber.TrimEnd(' ');
+//PhoneNumber = PhoneNumber.TrimStart(' ');
+
+
+//if (PhoneNumber.StartsWith("+98"))
+//{
+//    PhoneNumber = PhoneNumber.Replace("+98", "0");
+//}
+if (PhoneNumber.Length == 10 && !PhoneNumber.StartsWith("0"))
 {
-    Console.WriteLine("Please ente your phone number:");
-    str1 = Console.ReadLine();
-    try
-    {
-        if ((str1.Length == 11 && str1.StartsWith('0')) || (str1.Length == 10 && !str1.StartsWith('0')))
-        {
-            phone_num = long.Parse(str1);
-            phon_num_flag = false;
-        }
-        else if (str1.Length == 13 && str1.StartsWith("+98"))
-        {
-            str1 = str1.Remove(0, 3);
-            phone_num = long.Parse(str1);
-            phon_num_flag = false;
-        }
-        else
-        {
-            Console.WriteLine("Invalid phone number.");
-            phon_num_flag = true;
-        }
-    }
-    catch
-    {
-        Console.WriteLine("Invalid phone number.");
-        phon_num_flag = true;
-    }
+    PhoneNumber="0"+PhoneNumber;
 }
-str1 = '0' + phone_num.ToString();
-Console.WriteLine($"user information:\nName: {firstname} {lastname}\nPhone number: {str1}\nAge:{age} ");
+else
+{
+    Console.WriteLine("Please enter valid mobile number");
+}
+
+
+
+
+
+
+
+
+Console.WriteLine("end");
